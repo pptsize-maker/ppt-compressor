@@ -65,11 +65,10 @@ class EnvConfig {
      */
     getApiBaseUrl() {
         const config = {
-            //development: 'https://edge.pptsize.com/vip',
-            development: 'http://192.168.1.20:20000/lizhao',
-            staging: 'https://bjzb.apadog.com/school',
-            //production: 'https://bjzb.apadog.com/school'
-            production: 'https://cdn.pptsize.com/school'
+            //development: '',
+            development: '',
+            staging: '',
+            production: ''
         };
         return config[this.env];
     }
@@ -80,10 +79,9 @@ class EnvConfig {
     getVipApiBaseUrl() {
         // 暂时和普通 API 相同
         const config = {
-            development: 'http://192.168.1.20:20000/lizhao',
-            //development: 'http://api.pptsize.com/vip',
-            staging: 'https://api.pptsize.com/school',
-            production: 'https://cdn.pptsize.com/vip'
+            development: '',
+            staging: '',
+            production: ''
         };
         return config[this.env];
     }
@@ -122,14 +120,14 @@ class EnvConfig {
         const config = {
             development: {
                 // 测试环境 Portal 链接（从 Stripe Test Dashboard 获取）
-                portal: 'https://billing.stripe.com/p/login/test_dRmbIUc8j7qdeXp4wN2cg00',
+                portal: '',
             },
             staging: {
-                portal: 'https://billing.stripe.com/p/login/test_dRmbIUc8j7qdeXp4wN2cg00',
+                portal: '',
             },
             production: {
                 // 生产环境 Portal 链接（从 Stripe Production Dashboard 获取）
-                portal: 'https://billing.stripe.com/p/login/8x2dR23dk6542dha1S1Nu00',
+                portal: '',
             }
         };
         return config[this.env];
@@ -214,15 +212,15 @@ class EnvConfig {
         const config = {
             development: {
                 url: 'https://dpivmhgpibduwtcyueka.supabase.co',
-                anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwaXZtaGdwaWJkdXd0Y3l1ZWthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAwMjgyMzUsImV4cCI6MjA3NTYwNDIzNX0.QdHOivx7-KvZ1k86i_6c0-Q0k45Zk4XfSEmuVMemV48'
+                anonKey: ''
             },
             staging: {
                 url: 'https://dpivmhgpibduwtcyueka.supabase.co',
-                anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwaXZtaGdwaWJkdXd0Y3l1ZWthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAwMjgyMzUsImV4cCI6MjA3NTYwNDIzNX0.QdHOivx7-KvZ1k86i_6c0-Q0k45Zk4XfSEmuVMemV48'
+                anonKey: ''
             },
             production: {
                 url: 'https://dpivmhgpibduwtcyueka.supabase.co',
-                anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwaXZtaGdwaWJkdXd0Y3l1ZWthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAwMjgyMzUsImV4cCI6MjA3NTYwNDIzNX0.QdHOivx7-KvZ1k86i_6c0-Q0k45Zk4XfSEmuVMemV48'
+                anonKey: ''
             }
         };
         return config[this.env];
@@ -264,4 +262,5 @@ if (typeof window !== 'undefined') {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { EnvConfig, envConfig };
 }
+
 
