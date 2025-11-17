@@ -1,0 +1,136 @@
+/* ========================================
+   SEO内容区域样式 - 简洁版
+   ======================================== */
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 核心优势区域 */
+.intro-section {
+    padding: 40px 0;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+.advantage-description {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #374151;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.advantage-description strong {
+    color: #a31e22;
+    font-weight: 600;
+}
+
+/* 如何压缩PPT区域 */
+.features-section {
+    padding: 40px 0;
+}
+
+.howto-list {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.howto-item {
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.howto-item:last-child {
+    margin-bottom: 0;
+}
+
+.howto-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+}
+
+.howto-description {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #4b5563;
+    margin: 0;
+}
+
+.howto-description strong {
+    color: #a31e22;
+    font-weight: 600;
+}
+
+
+/* ========================================
+   响应式设计
+   ======================================== */
+@media (max-width: 768px) {
+    .intro-section,
+    .features-section {
+        padding: 32px 0;
+    }
+    
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 16px;
+    }
+    
+    .advantage-description {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+    
+    .howto-item {
+        padding: 20px;
+        margin-bottom: 16px;
+    }
+    
+    .howto-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .howto-description {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 20px;
+    }
+    
+    .advantage-description {
+        font-size: 14px;
+    }
+    
+    .howto-item {
+        padding: 16px;
+    }
+    
+    .howto-title {
+        font-size: 15px;
+    }
+    
+    .howto-description {
+        font-size: 13px;
+    }
+}
+

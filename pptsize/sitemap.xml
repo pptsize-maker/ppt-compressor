@@ -1,0 +1,87 @@
+<urlset 
+	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+	xsi:schemaLocation=" http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    <!-- 默认页面首页 -->
+	<url>
+		<loc>https://pptsize.com</loc>
+		<changefreq>daily</changefreq>
+	</url>
+	
+	<url>
+		<loc>https://pptsize.com/en/index.html</loc>
+		<changefreq>daily</changefreq>
+	</url>
+
+	<url>
+		<loc>https://pptsize.com/hi/index.html</loc>
+		<changefreq>daily</changefreq>
+	</url>
+
+	<url>
+		<loc>https://pptsize.com/ja/index.html</loc>
+		<changefreq>daily</changefreq>
+	</url>
+
+	<url>
+		<loc>https://pptsize.com/ko/index.html</loc>
+		<changefreq>daily</changefreq>
+	</url>
+
+	<url>
+		<loc>https://pptsize.com/de/index.html</loc>
+		<changefreq>daily</changefreq>
+	</url>
+
+	<url>
+		<loc>https://pptsize.com/fr/index.html</loc>
+		<changefreq>daily</changefreq>
+	</url>
+
+	<url>
+		<loc>https://pptsize.com/es/index.html</loc>
+		<changefreq>daily</changefreq>
+	</url>
+
+	<!-- 关键词  powerpoint-compress 页面 -->
+
+	<url>
+		<loc>https://pptsize.com/compress-pdf.html</loc>
+		<changefreq>daily</changefreq>
+	</url>
+
+<!-- 附加页面 sitemap -->
+
+	<url>
+		<loc>https://pptsize.com/privacy.html</loc>
+		<changefreq>daily</changefreq>
+	</url>
+
+	
+	<url>
+		<loc>https://pptsize.com/procing/index.html</loc>
+		<changefreq>daily</changefreq>
+	</url>
+
+	<url>
+		<loc>https://pptsize.com/cookies/index.html</loc>
+		<changefreq>daily</changefreq>
+	</url>
+
+	<url>
+		<loc>https://pptsize.com/security/index.html</loc>
+		<changefreq>daily</changefreq>
+	</url>
+
+	<url>
+		<loc>https://pptsize.com/terms/index.html</loc>
+		<changefreq>daily</changefreq>
+	</url>
+
+		<url>
+		<loc>https://pptsize.com/security/index.html</loc>
+		<changefreq>daily</changefreq>
+	</url>
+    
+</urlset>

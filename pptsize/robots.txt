@@ -1,0 +1,7 @@
+# robots.txt for pptsize.com
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://pptsize.com/sitemap.xml

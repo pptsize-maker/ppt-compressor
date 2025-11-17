@@ -1,0 +1,1051 @@
+/**
+ * 认证组件样式 - ilovepdf 风格
+ * 主色调：#a31e22（红色）
+ */
+
+/* ==================== 导航栏认证部分 ==================== */
+.auth-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-right: 20px;
+}
+
+.auth-login-btn {
+    padding: 8px 20px;
+    background: linear-gradient(135deg, #a31e22 0%, #d32f2f 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(163, 30, 34, 0.3);
+}
+
+.auth-login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(163, 30, 34, 0.4);
+}
+
+.auth-login-btn:active {
+    transform: translateY(0);
+}
+
+/* 用户下拉菜单 */
+.user-dropdown-wrapper {
+    position: relative;
+}
+
+.user-info-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    border: 2px solid #e5e7eb;
+    padding: 6px 16px 6px 6px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.user-info-btn:hover {
+    border-color: #a31e22;
+    background: #fef2f2;
+}
+
+.user-info-btn .dropdown-icon {
+    font-size: 10px;
+    color: #9ca3af;
+    transition: transform 0.3s ease;
+}
+
+.user-info-btn:hover .dropdown-icon {
+    transform: translateY(2px);
+    color: #a31e22;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #a31e22;
+}
+
+.user-avatar-placeholder {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #a31e22 0%, #d32f2f 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 用户下拉菜单面板 */
+.user-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    min-width: 260px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.user-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-dropdown-header {
+    padding: 16px 20px;
+}
+
+.user-dropdown-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.user-dropdown-email {
+    font-size: 13px;
+    color: #6b7280;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-dropdown-divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 0;
+}
+
+.user-dropdown-item {
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s ease;
+}
+
+.user-dropdown-item:hover {
+    background: #f9fafb;
+}
+
+.user-dropdown-label {
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.user-dropdown-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.user-dropdown-value.premium {
+    color: #a31e22;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.user-dropdown-value.premium::before {
+    content: '⭐';
+    font-size: 12px;
+}
+
+/* 可点击的用户信息项 */
+.user-dropdown-item-clickable {
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    background: transparent;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+}
+
+.user-dropdown-item-clickable:hover {
+    background: #f3f4f6;
+    transform: translateX(2px);
+}
+
+.user-dropdown-item-clickable:active {
+    background: #e5e7eb;
+}
+
+/* 管理订阅按钮中的箭头图标 */
+.user-dropdown-icon-arrow {
+    color: #9ca3af;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.user-dropdown-item-clickable:hover .user-dropdown-icon-arrow {
+    color: #a31e22;
+    transform: translateX(2px);
+}
+
+/* 管理订阅按钮的特殊样式 */
+#manageSubscriptionBtn .user-dropdown-label {
+    color: #374151;
+    font-weight: 600;
+}
+
+#manageSubscriptionBtn:hover .user-dropdown-label {
+    color: #a31e22;
+}
+
+.user-dropdown-value.free {
+    color: #6b7280;
+}
+
+.user-dropdown-link {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    background: transparent;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.user-dropdown-link:hover {
+    background: #f5f5f5;
+    color: #a31e22;
+}
+
+.user-dropdown-logout {
+    width: 100%;
+    padding: 12px 20px;
+    background: transparent;
+    color: #a31e22;
+    border: none;
+    border-radius: 0 0 12px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.user-dropdown-logout:hover {
+    background: #fef2f2;
+    color: #d32f2f;
+}
+
+/* ==================== 认证模态框 ==================== */
+.auth-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.auth-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.auth-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.auth-modal-content {
+    position: relative;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 440px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalSlideUp 0.3s ease;
+}
+
+@keyframes modalSlideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 模态框头部 */
+.auth-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 32px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.auth-modal-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.auth-modal-close {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: #f3f4f6;
+    color: #6b7280;
+    border-radius: 50%;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-modal-close:hover {
+    background: #fef2f2;
+    color: #a31e22;
+    transform: rotate(90deg);
+}
+
+/* 模态框主体 */
+.auth-modal-body {
+    padding: 32px;
+}
+
+/* 第三方登录按钮容器 */
+.auth-social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+/* Google 登录按钮 */
+.auth-google-btn {
+    width: 100%;
+    padding: 14px 16px;
+    background: white;
+    color: #374151;
+    border: 2px solid #e5e7eb;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.auth-google-btn:hover:not(:disabled) {
+    border-color: #a31e22;
+    background: #fef2f2;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(163, 30, 34, 0.15);
+}
+
+.auth-google-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.auth-google-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.auth-google-btn.loading::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    border: 2px solid rgba(163, 30, 34, 0.3);
+    border-top-color: #a31e22;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+.google-icon {
+    flex-shrink: 0;
+}
+
+/* Microsoft 登录按钮 */
+.auth-microsoft-btn {
+    width: 100%;
+    padding: 14px 16px;
+    background: white;
+    color: #374151;
+    border: 2px solid #e5e7eb;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.auth-microsoft-btn:hover:not(:disabled) {
+    border-color: #a31e22;
+    background: #fef2f2;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(163, 30, 34, 0.15);
+}
+
+.auth-microsoft-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.auth-microsoft-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.auth-microsoft-btn.loading::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    border: 2px solid rgba(163, 30, 34, 0.3);
+    border-top-color: #a31e22;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+.microsoft-icon {
+    flex-shrink: 0;
+}
+
+/* 分隔线 */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 24px 0;
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.auth-divider span {
+    padding: 0 12px;
+}
+
+/* 表单样式 */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.auth-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.auth-form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.auth-input {
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    outline: none;
+    color: #111827;
+}
+
+.auth-input:focus {
+    border-color: #a31e22;
+    box-shadow: 0 0 0 3px rgba(163, 30, 34, 0.1);
+}
+
+.auth-input::placeholder {
+    color: #9ca3af;
+}
+
+/* 表单页脚 */
+.auth-form-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -8px;
+}
+
+/* 链接样式 */
+.auth-link {
+    color: #a31e22;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.auth-link:hover {
+    color: #d32f2f;
+    text-decoration: underline;
+}
+
+/* 信息提示文本 */
+.auth-info-text {
+    padding: 12px 16px;
+    background: #fef2f2;
+    border-left: 3px solid #a31e22;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.5;
+}
+
+/* 错误/成功消息 */
+.auth-error {
+    padding: 12px 16px;
+    background: #fef2f2;
+    border-left: 3px solid #ef4444;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #dc2626;
+    display: none;
+    animation: errorSlideIn 0.3s ease;
+}
+
+.auth-error.show {
+    display: block;
+}
+
+.auth-error.success {
+    background: #f0fdf4;
+    border-left-color: #22c55e;
+    color: #16a34a;
+}
+
+@keyframes errorSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 提交按钮 */
+.auth-submit-btn {
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #a31e22 0%, #d32f2f 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(163, 30, 34, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(163, 30, 34, 0.4);
+}
+
+.auth-submit-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.auth-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.auth-submit-btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 页脚文本 */
+.auth-footer-text {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* ==================== 响应式设计 ==================== */
+@media (max-width: 768px) {
+    .auth-modal-content {
+        width: 95%;
+        max-width: none;
+        border-radius: 12px;
+    }
+
+    .auth-modal-header {
+        padding: 20px 24px;
+    }
+
+    .auth-modal-title {
+        font-size: 20px;
+    }
+
+    .auth-modal-body {
+        padding: 24px;
+    }
+
+    .auth-section {
+        margin-right: 10px;
+    }
+
+    .user-name {
+        display: none;
+    }
+
+    .auth-login-btn {
+        padding: 7px 16px;
+        font-size: 13px;
+    }
+    
+    /* 移动端菜单内的认证区域样式优化 - 极简风格 */
+    .nav-menu .auth-section {
+        margin-right: 0;
+    }
+    
+    .nav-menu .auth-login-btn {
+        width: 100%;
+        padding: 11px 16px; /* 精简内边距 */
+        font-size: 14px; /* 缩小字体 */
+        justify-content: center;
+        border-radius: 8px; /* 更小的圆角 */
+        font-weight: 500; /* 减轻字重 */
+        box-shadow: none; /* 去掉阴影 */
+        border: 1px solid rgba(163, 30, 34, 0.2); /* 添加淡边框 */
+    }
+    
+    .nav-menu .auth-login-btn:hover {
+        box-shadow: 0 1px 4px rgba(163, 30, 34, 0.15); /* 悬停时轻微阴影 */
+    }
+    
+    .nav-menu .auth-login-btn:active {
+        transform: scale(0.97);
+    }
+    
+    /* 移动端菜单内的用户信息按钮 - 极简风格 */
+    .nav-menu .user-dropdown-wrapper {
+        width: 100%;
+    }
+    
+    .nav-menu .user-info-btn {
+        width: 100%;
+        padding: 10px 12px; /* 精简内边距 */
+        justify-content: flex-start;
+        border-radius: 8px;
+        background: #fafafa; /* 更淡的背景 */
+        border: 1px solid #f3f4f6; /* 淡边框 */
+        gap: 10px; /* 缩小间距 */
+    }
+    
+    .nav-menu .user-info-btn:hover {
+        background: #f5f5f5;
+    }
+    
+    .nav-menu .user-info-btn:active {
+        transform: scale(0.97);
+    }
+    
+    .nav-menu .user-avatar {
+        width: 32px; /* 缩小头像 */
+        height: 32px;
+        border-width: 1px; /* 更细的边框 */
+    }
+    
+    .nav-menu .user-avatar-placeholder {
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+    }
+    
+    .nav-menu .user-name {
+        display: block;
+        max-width: 120px; /* 缩短宽度 */
+        font-size: 13px; /* 缩小字体 */
+        font-weight: 500;
+    }
+    
+    /* 移动端菜单内的用户下拉菜单 - 极简风格 */
+    .nav-menu .user-dropdown {
+        position: static;
+        box-shadow: none;
+        border: none; /* 去掉边框 */
+        border-radius: 8px;
+        margin-top: 8px;
+        min-width: 100%;
+        background: transparent; /* 透明背景 */
+        padding: 0;
+    }
+    
+    .nav-menu .user-dropdown-header {
+        padding: 10px 12px; /* 精简内边距 */
+        background: #fafafa;
+        border-radius: 8px 8px 0 0;
+    }
+    
+    .nav-menu .user-dropdown-name {
+        font-size: 13px;
+    }
+    
+    .nav-menu .user-dropdown-email {
+        font-size: 11px;
+    }
+    
+    .nav-menu .user-dropdown-item {
+        padding: 10px 12px; /* 精简内边距 */
+        background: #fafafa;
+        border-radius: 0;
+        border-bottom: 1px solid #f3f4f6;
+    }
+    
+    .nav-menu .user-dropdown-item:hover {
+        background: #f5f5f5;
+    }
+    
+    .nav-menu .user-dropdown-label {
+        font-size: 12px;
+    }
+    
+    .nav-menu .user-dropdown-value {
+        font-size: 12px;
+    }
+    
+    /* 移动端管理订阅按钮样式 */
+    .nav-menu .user-dropdown-icon-arrow {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .nav-menu .user-dropdown-logout {
+        font-size: 13px;
+        padding: 10px 12px;
+        background: #fafafa;
+        border-radius: 0 0 8px 8px;
+    }
+    
+    .nav-menu .user-dropdown-logout:hover {
+        background: #fef2f2;
+    }
+
+    /* 桌面端用户下拉菜单在移动设备上的位置调整 */
+    .navbar .user-dropdown:not(.nav-menu .user-dropdown) {
+        position: fixed;
+        top: 60px;
+        right: 16px;
+        left: 16px;
+        width: auto;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    /* 移动端菜单内的按钮和头像调整 - 极简小巧 */
+    .nav-menu .auth-login-btn {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+    
+    .nav-menu .user-info-btn {
+        padding: 9px 10px;
+        gap: 8px;
+    }
+    
+    .nav-menu .user-avatar,
+    .nav-menu .user-avatar-placeholder {
+        width: 28px; /* 进一步缩小 */
+        height: 28px;
+        font-size: 12px;
+    }
+    
+    .nav-menu .user-name {
+        font-size: 12px;
+        max-width: 100px;
+    }
+    
+    .nav-menu .user-dropdown-header {
+        padding: 8px 10px;
+    }
+    
+    .nav-menu .user-dropdown-name {
+        font-size: 12px;
+    }
+    
+    .nav-menu .user-dropdown-email {
+        font-size: 10px;
+    }
+    
+    .nav-menu .user-dropdown-item {
+        padding: 8px 10px;
+    }
+    
+    .nav-menu .user-dropdown-label,
+    .nav-menu .user-dropdown-value {
+        font-size: 11px;
+    }
+    
+    /* 极小屏幕管理订阅按钮样式 */
+    .nav-menu .user-dropdown-icon-arrow {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .nav-menu .user-dropdown-logout {
+        padding: 9px 10px;
+        font-size: 12px;
+    }
+    
+    /* 登录模态框样式 */
+    .auth-modal-content {
+        border-radius: 10px;
+    }
+
+    .auth-modal-header {
+        padding: 16px 20px;
+    }
+
+    .auth-modal-title {
+        font-size: 18px;
+    }
+
+    .auth-modal-body {
+        padding: 20px;
+    }
+
+    .auth-form {
+        gap: 16px;
+    }
+
+    .auth-input,
+    .auth-google-btn,
+    .auth-microsoft-btn {
+        padding: 11px 14px;
+        font-size: 14px;
+    }
+
+    .auth-submit-btn {
+        padding: 12px 20px;
+        font-size: 15px;
+    }
+}
+
+/* ==================== 暗色主题支持 ==================== */
+@media (prefers-color-scheme: dark) {
+    .auth-modal-content {
+        background: #1f2937;
+        color: #f3f4f6;
+    }
+
+    .auth-modal-header {
+        border-bottom-color: #374151;
+    }
+
+    .auth-modal-title {
+        color: #f9fafb;
+    }
+
+    .auth-modal-close {
+        background: #374151;
+        color: #9ca3af;
+    }
+
+    .auth-modal-close:hover {
+        background: #fef2f2;
+        color: #a31e22;
+    }
+
+    .auth-google-btn,
+    .auth-microsoft-btn {
+        background: #374151;
+        border-color: #4b5563;
+        color: #f3f4f6;
+    }
+
+    .auth-google-btn:hover:not(:disabled),
+    .auth-microsoft-btn:hover:not(:disabled) {
+        background: #fef2f2;
+        border-color: #a31e22;
+        color: #374151;
+    }
+
+    .auth-divider {
+        color: #6b7280;
+    }
+
+    .auth-divider::before,
+    .auth-divider::after {
+        border-bottom-color: #4b5563;
+    }
+
+    .auth-form-group label {
+        color: #f3f4f6;
+    }
+
+    .auth-input {
+        background: #374151;
+        border-color: #4b5563;
+        color: #f3f4f6;
+    }
+
+    .auth-input:focus {
+        border-color: #a31e22;
+        background: #4b5563;
+    }
+
+    .auth-input::placeholder {
+        color: #6b7280;
+    }
+
+    .auth-info-text {
+        background: #3a1a1a;
+        border-left-color: #a31e22;
+        color: #fef2f2;
+    }
+
+    .user-name {
+        color: #f3f4f6;
+    }
+
+    .user-info-btn {
+        background: #374151;
+        border-color: #4b5563;
+    }
+
+    .user-info-btn:hover {
+        background: #4b5563;
+        border-color: #a31e22;
+    }
+
+    .user-dropdown {
+        background: #1f2937;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .user-dropdown-name {
+        color: #f9fafb;
+    }
+
+    .user-dropdown-email {
+        color: #9ca3af;
+    }
+
+    .user-dropdown-divider {
+        background: #374151;
+    }
+
+    .user-dropdown-item:hover {
+        background: #374151;
+    }
+
+    .user-dropdown-label {
+        color: #9ca3af;
+    }
+
+    .user-dropdown-value {
+        color: #f3f4f6;
+    }
+
+    .user-dropdown-logout {
+        color: #a31e22;
+    }
+
+    .user-dropdown-logout:hover {
+        background: #3a1a1a;
+        color: #d32f2f;
+    }
+
+    .auth-footer-text {
+        color: #9ca3af;
+    }
+}
+
+/* ==================== 打印样式 ==================== */
+@media print {
+    .auth-modal,
+    .auth-section {
+        display: none !important;
+    }
+}

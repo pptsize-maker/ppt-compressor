@@ -1,0 +1,65 @@
+/* ========================================
+   布局样式 - ilovepdf 风格
+   ======================================== */
+
+/* 覆盖旧的渐变背景 */
+body {
+    background: #f3f4f6 !important;
+    min-height: 100vh;
+}
+
+#app {
+    width: 100%;
+    background: #f3f4f6;
+    min-height: 100vh;
+}
+
+/* 容器 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 主内容区 */
+main {
+    min-height: calc(100vh - 200px);
+    padding: 0;
+}
+
+/* 页面布局 */
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.page-content {
+    flex: 1;
+}
+
+/* ========================================
+   SEO 页面标题 (H1)
+   ======================================== */
+.page-header {
+    max-width: 800px;
+    margin: 60px auto 30px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+/* H1 使用 section-title class 样式 */
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .page-header {
+        margin: 50px auto 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header {
+        margin: 40px auto 20px;
+    }
+}
+

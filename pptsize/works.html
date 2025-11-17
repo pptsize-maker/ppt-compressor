@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags (将通过 JavaScript 动态设置) -->
+    <title id="pageTitle">我的任务 - pptsize</title>
+    <meta name="description" content="查看您的 PPT 压缩任务列表，下载已完成的文件" id="pageDescription">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- 样式 -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/works.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+    <!-- 导航栏容器 -->
+    <div id="navbarContainer"></div>
+
+    <!-- 主内容区 -->
+    <div id="app">
+        <!-- 任务列表容器 -->
+        <div id="worksContainer"></div>
+    </div>
+
+    <!-- 页脚容器 -->
+    <div id="footerContainer"></div>
+
+    <!-- 1. 加载第三方库 -->
+    <script src="js/config/supabase-js@2.js"></script>
+    <script src="js/utils/axios.min.js"></script>
+
+    <!-- 2. 加载国际化工具 -->
+    <script src="js/utils/i18n.js"></script>
+    
+    <!-- 3. 加载语言包 -->
+    <script src="js/lang/zh.js"></script>
+    <script src="js/lang/en.js"></script>
+    <script src="js/lang/ja.js"></script>
+    <script src="js/lang/ko.js"></script>
+    <script src="js/lang/hi.js"></script>
+    <script src="js/lang/de.js"></script>
+    <script src="js/lang/fr.js"></script>
+    <script src="js/lang/es.js"></script>
+    <script>
+        // 使用 i18n 获取当前语言并设置全局语言对象
+        const currentLang = window.i18n.getCurrentLangCode();
+        window.LANG = window.i18n.loadLanguage(currentLang);
+        console.log('🌐 当前语言:', currentLang);
+        
+        // 动态设置页面标题和描述
+        if (window.LANG && window.LANG.works) {
+            const pageTitle = window.LANG.works.pageTitle || '我的任务';
+            document.getElementById('pageTitle').textContent = `${pageTitle} - pptsize`;
+            
+            const metaDescription = window.LANG.works.metaDescription || '';
+            const descriptionMeta = document.getElementById('pageDescription');
+            if (descriptionMeta && metaDescription) {
+                descriptionMeta.setAttribute('content', metaDescription);
+            }
+            
+            // 设置 HTML lang 属性
+            const langMap = { 'zh': 'zh-CN', 'en': 'en-US', 'ja': 'ja-JP', 'ko': 'ko-KR', 'hi': 'hi-IN', 'de': 'de-DE', 'fr': 'fr-FR', 'es': 'es-ES' };
+            document.getElementById('htmlRoot').setAttribute('lang', langMap[currentLang] || 'zh-CN');
+        }
+    </script>
+    
+    <!-- 4. 加载配置和工具 -->
+    <script src="js/config/env.js"></script>
+    <script src="js/config/supabase-config.js"></script>
+    <script src="js/utils/request.js"></script>
+    <script src="js/api/user.js"></script>
+    <script src="js/api/works.js"></script>
+    <!-- lodash 放重复点击按钮的防抖 -->
+    <script src="js/utils/lodash.min.js"></script>
+    <!-- 通用下载工具 -->
+    <script src="js/utils/download.js"></script>
+    
+    <!-- 5. 加载组件脚本 -->
+    <script src="js/components/Auth.js"></script>
+    <script src="js/components/Navbar.js"></script>
+    <script src="js/components/Footer.js"></script>
+    <script type="module" src="js/components/MyWorks.js"></script>
+    
+    <!-- 6. 初始化应用 -->
+    <script type="module">
+        import { MyWorks } from './js/components/MyWorks.js';
+
+        // 全局变量
+        let navbar, footer, myWorks;
+
+        // 初始化应用
+        async function initApp() {
+            console.log('🎬 应用开始初始化...');
+            
+            // 1. 【优先】初始化导航栏和用户认证状态
+            console.log('📍 步骤 1: 初始化 Navbar 和用户认证');
+            navbar = new Navbar({
+                container: document.getElementById('navbarContainer'),
+                lang: window.LANG
+            });
+            await navbar.init(); // 先初始化认证状态
+            navbar.render();      // 再渲染 UI
+            console.log('✅ Navbar 渲染完成');
+            
+            // 2. 渲染页脚
+            console.log('📍 步骤 2: 初始化 Footer');
+            footer = new Footer({
+                container: document.getElementById('footerContainer'),
+                lang: window.LANG
+            });
+            footer.render();
+            footer.addBackToTopButton();
+            console.log('✅ Footer 渲染完成');
+            
+            // 3. 渲染任务列表组件
+            console.log('📍 步骤 3: 初始化任务列表组件');
+            myWorks = new MyWorks('worksContainer', window.LANG);
+            await myWorks.render();
+            console.log('✅ 任务列表组件渲染完成');
+            
+            // 4. 暴露到全局方便调试和跨组件访问
+            window.navbar = navbar;
+            window.myWorks = myWorks;
+            
+            console.log('🎉 应用初始化完成 [中文版]');
+            console.log('-----------------------------------');
+        }
+
+        // 启动应用
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
+
+        // 页面卸载时清理定时器
+        window.addEventListener('beforeunload', () => {
+            if (myWorks) {
+                myWorks.destroy();
+            }
+        });
+    </script>
+
+    <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/6908a2aa8c8db31953f42d48/1j94rmqrq';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+        <!--End of Tawk.to Script-->
+
+
+</body>
+</html>
+

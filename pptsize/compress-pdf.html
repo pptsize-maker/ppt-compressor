@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>免费在线PDF压缩工具-PDF压缩保持高清无损 - pdfsize</title>
+    <meta name="description" content="免费在线PDF压缩工具，支持PDF文件压缩，快速压缩PDF体积大小，保持文档质量。无需下载安装，一键压缩PDF文件，完全免费。">
+    <meta name="keywords" content="免费PDF压缩, 免费PDF压缩工具, 在线压缩PDF, 压缩PDF文件大小, PDF文件太大怎么办, PDF图片压缩, PDF体积减小, PDF优化, PDF瘦身, PDF压缩免费, 在线PDF优化, PDF压缩教程, 如何压缩PDF">
+    <meta name="author" content="pdfsize">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pptsize.com/compress-pdf.html">
+    <meta property="og:title" content="免费在线PDF压缩工具-PDF压缩保持高清无损 - pdfsize">
+    <meta property="og:description" content="免费在线PDF压缩工具，支持PDF文件压缩，快速压缩PDF体积大小，保持文档质量。无需下载安装，一键压缩PDF文件，完全免费。">
+    <meta property="og:image" content="https://pptsize.com/compress-ppt.png">
+    <meta property="og:image:alt" content="免费在线PDF压缩工具">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="免费在线PDF压缩工具-PDF压缩保持高清无损 - pdfsize">
+    <meta name="twitter:description" content="免费在线PDF压缩工具，支持PDF文件压缩，快速压缩PDF体积大小，保持文档质量。无需下载安装，一键压缩PDF文件，完全免费。">
+    <meta name="twitter:image" content="https://pptsize.com/compress-ppt.png">
+    <meta name="twitter:image:alt" content="免费在线PDF压缩工具">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://pptsize.com/compress-pdf.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    
+    <style>
+        /* ========================================
+           全局样式重置
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #a31e22;
+            --primary-dark: #d32f2f;
+            --success-color: #059669;
+            --success-light: #10b981;
+            --error-color: #ef4444;
+            --text-dark: #111827;
+            --text-gray: #374151;
+            --text-light: #6b7280;
+            --text-muted: #9ca3af;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: var(--bg-light);
+            min-height: 100vh;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           导航栏样式（注释掉 - 暂不显示）
+           ======================================== */
+        /*
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-size: 30px;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .logo-text strong {
+            font-weight: 700;
+            color: #a31e22;
+        }
+        */
+
+        /* ========================================
+           容器和布局
+           ======================================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        #app {
+            width: 100%;
+            background: var(--bg-light);
+        }
+
+        /* ========================================
+           页面标题
+           ======================================== */
+        .page-header {
+            padding: 40px 0 20px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-align: center;
+            margin: 0 0 20px 0;
+            line-height: 1.4;
+        }
+
+        /* ========================================
+           PDF压缩组件
+           ======================================== */
+        .pdf-compressor {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        /* 上传区域 */
+        .upload-section {
+            width: 100%;
+        }
+
+        .upload-area {
+            background: #ffffff;
+            border: 3px dashed var(--border-color);
+            border-radius: 16px;
+            padding: 80px 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background: #fef2f2;
+        }
+
+        .upload-area.drag-over {
+            border-color: var(--primary-color);
+            background: #fef2f2;
+            transform: scale(1.02);
+        }
+
+        .btn-upload {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            padding: 16px 48px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 24px 0;
+            box-shadow: 0 4px 15px rgba(163, 30, 34, 0.3);
+        }
+
+        .btn-upload:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(163, 30, 34, 0.4);
+        }
+
+        .btn-upload:active {
+            transform: translateY(0);
+        }
+
+        .upload-hint {
+            color: var(--text-light);
+            font-size: 14px;
+            margin: 16px 0 0 0;
+        }
+
+        /* 文件预览区域 */
+        .file-preview-section {
+            width: 100%;
+        }
+
+        .file-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            position: relative;
+            transition: all 0.3s ease;
+            min-height: 80px;
+        }
+
+        .file-card.has-progress {
+            padding-bottom: 80px;
+        }
+
+        .file-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .file-card-icon {
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .file-card-icon svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .file-card-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .file-card-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .file-card-size {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .file-card-stats {
+            font-size: 14px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .file-card-stats .arrow {
+            color: var(--text-muted);
+        }
+
+        .file-card-stats .compressed {
+            color: var(--success-color);
+            font-weight: 600;
+        }
+
+        .file-card-stats .saved {
+            color: var(--success-color);
+            font-weight: 600;
+        }
+
+        .file-card-remove {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .file-card-remove:hover {
+            background: #fee2e2;
+            color: var(--error-color);
+        }
+
+        .file-card-remove svg {
+            display: block;
+        }
+
+        /* 文件卡片进度条 */
+        .file-card-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 12px 20px 16px;
+            background: #f9fafb;
+            border-top: 1px solid var(--border-color);
+            border-radius: 0 0 12px 12px;
+            box-sizing: border-box;
+        }
+
+        .file-card-progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .file-card-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            width: 0;
+        }
+
+        .file-card-progress-text {
+            font-size: 13px;
+            color: var(--text-light);
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* 压缩中动画效果 */
+        .file-card-progress-text.compressing-animation {
+            color: var(--primary-color);
+            font-weight: 600;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        /* 底部操作按钮 */
+        .bottom-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-compress {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(163, 30, 34, 0.3);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-compress:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(163, 30, 34, 0.4);
+        }
+
+        .btn-compress:active {
+            transform: translateY(0);
+        }
+
+        .btn-compress:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .btn-compress .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2.5px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        .btn-another {
+            background: white;
+            color: var(--text-light);
+            border: 2px solid var(--border-color);
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-another:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background: #fef2f2;
+        }
+
+        /* 结果区域 */
+        .result-section {
+            text-align: center;
+            width: 100%;
+        }
+
+        .result-success-icon {
+            margin: 0 auto 24px;
+            animation: scaleIn 0.5s ease;
+        }
+
+        .result-error-icon {
+            margin: 0 auto 24px;
+            animation: shake 0.5s ease;
+        }
+
+        .result-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0 0 32px 0;
+        }
+
+        .file-card.result {
+            margin-bottom: 32px;
+        }
+
+        .file-card-download {
+            background: transparent;
+            color: var(--text-light);
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .file-card-download:hover {
+            color: var(--primary-color);
+            background: #fee2e2;
+        }
+
+        .file-card-download svg {
+            display: block;
+        }
+
+        /* 错误区域 */
+        .error-section {
+            text-align: center;
+            width: 100%;
+        }
+
+        .error-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0 0 16px 0;
+        }
+
+        .error-message {
+            color: var(--text-light);
+            font-size: 15px;
+            margin: 0 0 32px 0;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           SEO内容区域
+           ======================================== */
+        .intro-section {
+            padding: 40px 0;
+        }
+
+        .advantage-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .advantage-description strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .features-section {
+            padding: 40px 0;
+        }
+
+        .howto-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .howto-item {
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .howto-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .howto-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 0 0 12px 0;
+            line-height: 1.4;
+        }
+
+        .howto-description {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #4b5563;
+            margin: 0;
+        }
+
+        .howto-description strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .howto-description a {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* ========================================
+           页脚样式
+           ======================================== */
+        .footer {
+            background: #1f2937;
+            color: var(--text-muted);
+            margin-top: 80px;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 8px 0;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 8px;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--primary-color);
+        }
+
+        /* ========================================
+           动画
+           ======================================== */
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes scaleIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-10px);
+            }
+            75% {
+                transform: translateX(10px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* ========================================
+           响应式设计
+           ======================================== */
+        @media (max-width: 768px) {
+            .pdf-compressor {
+                margin: 30px auto;
+            }
+            
+            .upload-area {
+                padding: 60px 24px;
+            }
+            
+            .btn-upload {
+                padding: 14px 36px;
+                font-size: 16px;
+            }
+            
+            .file-card {
+                padding: 16px;
+                gap: 12px;
+            }
+            
+            .file-card.has-progress {
+                padding-bottom: 70px;
+            }
+            
+            .file-card-name {
+                font-size: 15px;
+            }
+            
+            .file-card-size,
+            .file-card-stats {
+                font-size: 13px;
+            }
+            
+            .btn-compress,
+            .btn-another {
+                padding: 14px 24px;
+                font-size: 15px;
+            }
+            
+            .result-title,
+            .error-title {
+                font-size: 22px;
+            }
+
+            .section-title {
+                font-size: 22px;
+                margin-bottom: 16px;
+            }
+            
+            .advantage-description {
+                font-size: 15px;
+                line-height: 1.7;
+            }
+            
+            .howto-item {
+                padding: 20px;
+                margin-bottom: 16px;
+            }
+            
+            .howto-title {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            
+            .howto-description {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .upload-area {
+                padding: 40px 20px;
+            }
+            
+            .file-card {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 12px;
+            }
+            
+            .file-card.has-progress {
+                padding-bottom: 120px;
+            }
+            
+            .file-card-remove {
+                position: absolute;
+                top: 12px;
+                right: 12px;
+            }
+            
+            .file-card-progress {
+                padding: 10px 16px 12px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+            
+            .advantage-description {
+                font-size: 14px;
+            }
+            
+            .howto-item {
+                padding: 16px;
+            }
+            
+            .howto-title {
+                font-size: 15px;
+            }
+            
+            .howto-description {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏容器（注释掉 - 暂不显示） -->
+    <!--
+    <div id="navbarContainer">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="/">
+                        <span class="logo-text"><strong>pdf</strong>size</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    -->
+
+    <!-- 主内容区 -->
+    <div id="app">
+        <!-- SEO H1 主标题 -->
+        <header class="page-header">
+            <h1 class="section-title">免费在线 PDF 压缩工具 - 快速减小 PDF 文件大小</h1>
+        </header>
+        
+        <!-- PDF压缩组件容器 -->
+        <div id="compressorContainer"></div>
+
+        <!-- 核心优势 -->
+        <section class="intro-section" id="advantagesSection">
+            <div class="container">
+                <h2 class="section-title">我们的优势</h2>
+                <p class="advantage-description">最大压缩率为<strong>90%</strong>，<strong>完整保留所有文本、图片、链接、书签等内容</strong>，保持<strong>绝对的高清</strong>，确保压缩后的PDF文件在任何设备上都能完美显示。</p>
+            </div>
+        </section>
+
+        <!-- 如何压缩PDF -->
+        <section class="features-section" id="howtoSection">
+            <div class="container">
+                <h2 class="section-title">如何压缩 PDF ？</h2>
+                <div class="howto-list">
+                    <div class="howto-item">
+                        <h3 class="howto-title">1. 智能图片优化</h3>
+                        <p class="howto-description">我们会对 PDF 中的 <strong>JPEG、PNG、GIF、BMP、TIFF</strong> 等所有图片格式使用<strong>智能算法优化每一个像素块</strong>，确保在减小文件大小的同时保持视觉质量。</p>
+                    </div>
+                    <div class="howto-item">
+                        <h3 class="howto-title">2. 文档结构优化</h3>
+                        <p class="howto-description">通过<strong>优化PDF内部结构</strong>，移除冗余数据，压缩文档流，使文件更加紧凑高效，同时保持所有功能完整。</p>
+                    </div>
+                    <div class="howto-item">
+                        <h3 class="howto-title">3. 字体子集化</h3>
+                        <p class="howto-description">对于嵌入的字体，我们会进行<strong>字体子集化处理</strong>，只保留文档中实际使用的字符，大幅减少字体文件占用空间。</p>
+                    </div>
+                    <div class="howto-item">
+                        <h3 class="howto-title">4. 处理时间说明</h3>
+                        <p class="howto-description">由于我们采用精细化处理每个元素，处理起来会稍慢，但结果一定让您满意。我们宁愿多花一点时间，也要确保给您最优质的压缩效果。</p>
+                    </div>
+                    <div class="howto-item">
+                        <h3 class="howto-title">5. 温馨提示</h3>
+                        <p class="howto-description">💡 如果您的 PDF 文件已经被压缩过，可能难以进一步优化，压缩效果会非常有限。为了获得最佳的压缩效果，我们建议使用原始未经压缩的 PDF 文件。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <div class="container">
+            <p>&copy; 2024 pdfsize. All rights reserved.</p>
+            <p>
+                <a href="/privacy.html">隐私政策</a>
+                <a href="/terms.html">服务条款</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- 加载依赖库和配置 -->
+    <!-- Lodash (download.js 依赖) -->
+    <script src="js/utils/lodash.min.js"></script>
+    
+    <!-- Axios -->
+    <script src="js/utils/axios.min.js"></script>
+    
+    <!-- 配置和工具 -->
+    <script src="js/config/env.js"></script>
+    <script src="js/utils/request.js"></script>
+    <script src="js/utils/download.js"></script>
+    <script src="js/api/pdf.js"></script>
+
+    <script>
+        /**
+         * PDF压缩组件
+         * 对接真实API
+         */
+        class PDFCompressor {
+            constructor(containerId) {
+                this.container = document.getElementById(containerId);
+                this.currentFile = null;
+                this.originalFile = null;
+                this.state = 'idle'; // idle, uploading, compressing, completed, error
+            }
+
+            /**
+             * 渲染组件
+             */
+            render() {
+                console.log('🎨 PDFCompressor render() 开始执行');
+                
+                if (!this.container) {
+                    console.error('❌ 容器元素不存在！');
+                    return;
+                }
+                
+                this.container.innerHTML = `
+                    <div class="pdf-compressor">
+                        <!-- 上传区域 -->
+                        <div class="upload-section" id="uploadSection">
+                            <div class="upload-area" id="uploadArea">
+                                <input type="file" 
+                                       id="fileInput" 
+                                       accept=".pdf,application/pdf"
+                                       style="display: none">
+                                
+                                <button class="btn-upload" id="selectFileBtn">
+                                    选择 PDF 文件
+                                </button>
+                                
+                                <p class="upload-hint">支持 PDF 格式 · 最大 30MB</p>
+                            </div>
+                        </div>
+
+                        <!-- 文件预览区域 -->
+                        <div class="file-preview-section" id="filePreviewSection" style="display: none;">
+                            <!-- 文件卡片 -->
+                            <div class="file-card">
+                                <div class="file-card-icon">
+                                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                        <rect x="8" y="4" width="24" height="32" rx="2" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M12 12h16M12 18h16M12 24h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                                <div class="file-card-info">
+                                    <div class="file-card-name" id="fileCardName">document.pdf</div>
+                                    <div class="file-card-size" id="fileCardSize">0 MB</div>
+                                </div>
+                                <button class="file-card-remove" id="removeFileBtn" title="移除文件">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M5 5L15 15M5 15L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                                
+                                <!-- 进度条（压缩时显示） -->
+                                <div class="file-card-progress" id="fileCardProgress" style="display: none;">
+                                    <div class="file-card-progress-bar">
+                                        <div class="file-card-progress-fill" id="progressFill"></div>
+                                    </div>
+                                    <div class="file-card-progress-text" id="progressText">上传中 0%</div>
+                                </div>
+                            </div>
+                            
+                            <!-- 底部操作按钮 -->
+                            <div class="bottom-actions">
+                                <button class="btn-compress" id="startCompressBtn">
+                                    开始压缩
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 结果区域 -->
+                        <div class="result-section" id="resultSection" style="display: none;">
+                            <div class="result-success-icon">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                    <circle cx="30" cy="30" r="28" stroke="#22c55e" stroke-width="4"/>
+                                    <path d="M18 30L26 38L42 22" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            
+                            <h3 class="result-title">压缩成功！</h3>
+                            
+                            <!-- 文件卡片（完成状态） -->
+                            <div class="file-card result">
+                                <div class="file-card-icon">
+                                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                        <rect x="8" y="4" width="24" height="32" rx="2" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M12 12h16M12 18h16M12 24h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                                <div class="file-card-info">
+                                    <div class="file-card-name" id="resultFileName">document.pdf</div>
+                                    <div class="file-card-stats">
+                                        <span id="resultOriginalSize">0 MB</span>
+                                        <span class="arrow">→</span>
+                                        <span class="compressed" id="resultCompressedSize">0 MB</span>
+                                        <span class="saved" id="resultSaved">(节省 0%)</span>
+                                    </div>
+                                </div>
+                                <!-- 下载图标按钮 -->
+                                <button class="file-card-download" id="downloadBtn" title="下载">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 4L12 16M12 16L8 12M12 16L16 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <!-- 压缩其他文件按钮 -->
+                            <div class="bottom-actions">
+                                <button class="btn-another" id="compressAnotherBtn">
+                                    压缩其他文件
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 错误区域 -->
+                        <div class="error-section" id="errorSection" style="display: none;">
+                            <div class="result-error-icon">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                    <circle cx="30" cy="30" r="28" stroke="#ef4444" stroke-width="4"/>
+                                    <path d="M22 22L38 38M22 38L38 22" stroke="#ef4444" stroke-width="4" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <h3 class="error-title">压缩失败</h3>
+                            <p class="error-message" id="errorMessage">错误信息</p>
+                            <div class="bottom-actions">
+                                <button class="btn-compress" id="tryAgainBtn">
+                                    重试
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                console.log('🎨 HTML 已渲染，准备绑定事件');
+                this.attachEvents();
+                console.log('✅ PDFCompressor render() 完成');
+            }
+
+            /**
+             * 绑定事件
+             */
+            attachEvents() {
+                console.log('🔗 attachEvents() 开始执行');
+                
+                const selectFileBtn = document.getElementById('selectFileBtn');
+                const fileInput = document.getElementById('fileInput');
+                const uploadArea = document.getElementById('uploadArea');
+                const removeFileBtn = document.getElementById('removeFileBtn');
+                const startCompressBtn = document.getElementById('startCompressBtn');
+                const downloadBtn = document.getElementById('downloadBtn');
+                const compressAnotherBtn = document.getElementById('compressAnotherBtn');
+                const tryAgainBtn = document.getElementById('tryAgainBtn');
+
+                // 选择文件按钮
+                selectFileBtn?.addEventListener('click', (e) => {
+                    console.log('🖱️ 点击选择文件按钮');
+                    e.preventDefault();
+                    e.stopPropagation();
+                    fileInput?.click();
+                });
+
+                // 文件选择
+                fileInput?.addEventListener('change', (e) => {
+                    console.log('文件选择事件触发');
+                    const file = e.target.files[0];
+                    if (file) {
+                        console.log('选择的文件:', file.name, '大小:', file.size);
+                        this.handleFile(file);
+                    }
+                });
+
+                // 拖拽上传
+                uploadArea?.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.add('drag-over');
+                });
+
+                uploadArea?.addEventListener('dragleave', () => {
+                    uploadArea.classList.remove('drag-over');
+                });
+
+                uploadArea?.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.remove('drag-over');
+                    const file = e.dataTransfer.files[0];
+                    if (file) {
+                        console.log('拖拽的文件:', file.name);
+                        this.handleFile(file);
+                    }
+                });
+
+                // 移除文件按钮
+                removeFileBtn?.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    console.log('🗑️ 点击移除文件按钮');
+                    this.reset();
+                });
+
+                // 开始压缩按钮
+                startCompressBtn?.addEventListener('click', async () => {
+                    console.log('点击开始压缩按钮');
+                    if (this.currentFile) {
+                        this.setButtonLoading(startCompressBtn, true);
+                        
+                        try {
+                            await this.compressFile(this.currentFile);
+                        } catch (error) {
+                            console.error('压缩失败:', error);
+                            this.showError(error.message || '压缩失败，请重试');
+                        } finally {
+                            this.setButtonLoading(startCompressBtn, false);
+                        }
+                    }
+                });
+
+                // 下载按钮
+                downloadBtn?.addEventListener('click', () => this.handleDownload());
+
+                // 压缩其他文件
+                compressAnotherBtn?.addEventListener('click', () => this.reset());
+
+                // 重试
+                tryAgainBtn?.addEventListener('click', () => this.retry());
+            }
+
+            /**
+             * 处理文件
+             */
+            async handleFile(file) {
+                console.log('处理文件:', file);
+                this.currentFile = file;
+                this.originalFile = file;
+
+                // 验证文件类型
+                if (!file.type.includes('pdf') && !file.name.match(/\.pdf$/i)) {
+                    alert('请选择 PDF 文件');
+                    this.currentFile = null;
+                    this.originalFile = null;
+                    this._resetFileInput();
+                    return;
+                }
+
+                // 验证文件大小（30MB）
+                const maxSize = 30 * 1024 * 1024;
+                if (file.size > maxSize) {
+                    alert('文件大小超过 30MB 限制');
+                    this.currentFile = null;
+                    this.originalFile = null;
+                    this._resetFileInput();
+                    return;
+                }
+
+                // 显示文件选择界面
+                this.showFileSelected(file);
+            }
+
+            /**
+             * 重置文件输入框
+             */
+            _resetFileInput() {
+                const fileInput = document.getElementById('fileInput');
+                if (fileInput) {
+                    fileInput.value = '';
+                }
+            }
+
+            /**
+             * 设置按钮加载状态
+             */
+            setButtonLoading(button, isLoading) {
+                if (!button) return;
+                
+                if (isLoading) {
+                    button.dataset.originalText = button.innerHTML;
+                    button.disabled = true;
+                    button.innerHTML = `
+                        <div class="spinner"></div>
+                        <span>处理中...</span>
+                    `;
+                } else {
+                    button.disabled = false;
+                    if (button.dataset.originalText) {
+                        button.innerHTML = button.dataset.originalText;
+                    }
+                }
+            }
+
+            /**
+             * 显示文件已选择界面
+             */
+            showFileSelected(file) {
+                console.log('显示文件选择界面');
+                document.getElementById('uploadSection').style.display = 'none';
+                document.getElementById('filePreviewSection').style.display = 'block';
+                
+                document.getElementById('fileCardName').textContent = file.name;
+                document.getElementById('fileCardSize').textContent = this.formatFileSize(file.size);
+                
+                // 隐藏进度条
+                const fileCardProgress = document.getElementById('fileCardProgress');
+                const fileCard = document.querySelector('.file-card');
+                if (fileCardProgress) {
+                    fileCardProgress.style.display = 'none';
+                    if (fileCard) fileCard.classList.remove('has-progress');
+                }
+                
+                this.state = 'file-selected';
+            }
+
+            /**
+             * 压缩文件（调用真实API）
+             */
+            async compressFile(file) {
+                try {
+                    console.log('开始上传和压缩');
+                    // 记录原始文件大小
+                    const originalSize = file.size;
+                    
+                    // 显示进度条
+                    const fileCardProgress = document.getElementById('fileCardProgress');
+                    const fileCard = document.querySelector('.file-card');
+                    if (fileCardProgress) {
+                        fileCardProgress.style.display = 'block';
+                        if (fileCard) fileCard.classList.add('has-progress');
+                    }
+                    
+                    this.state = 'uploading';
+                    console.log('📤 状态: uploading');
+                    
+                    // 调用 PDF 压缩 API（上传+处理一体）
+                    const result = await pdfApi.compress(file, (percent) => {
+                        // 更新上传进度
+                        const status = percent < 100 ? '上传中' : '压缩中';
+                        console.log(`🔄 进度回调: ${percent}%, 状态: ${status}, 当前state: ${this.state}`);
+                        this.updateProgress(percent, status);
+                        
+                        // 上传完成后，切换到压缩状态
+                        if (percent === 100 && this.state === 'uploading') {
+                            this.state = 'compressing';
+                            console.log('📥 状态切换: uploading -> compressing');
+                        }
+                    });
+
+                    console.log('压缩结果:', result);
+
+                    // 检查是否成功
+                    if (!result.success) {
+                        throw new Error(result.message || '压缩失败');
+                    }
+
+                    // 保存压缩结果
+                    this.currentFile = {
+                        fileName: result.data.name,
+                        originalSize: originalSize,
+                        compressedSize: result.data.sizeBytes,
+                        format: result.data.format,
+                        path: result.data.path,
+                        absPath: result.data.absPath,
+                        download: result.data.download,
+                        // 构建完整的下载 URL
+                        downloadUrl: envConfig.getDownloadUrl(result.data.download)
+                    };
+
+                    console.log('📋 压缩结果详情:');
+                    console.log('  - 文件名:', this.currentFile.fileName);
+                    console.log('  - 原始大小:', this.formatFileSize(this.currentFile.originalSize));
+                    console.log('  - 压缩后大小:', this.formatFileSize(this.currentFile.compressedSize));
+                    console.log('  - 节省:', Math.round(((this.currentFile.originalSize - this.currentFile.compressedSize) / this.currentFile.originalSize) * 100) + '%');
+
+                    // 显示结果
+                    this.showResult(this.currentFile);
+
+                } catch (error) {
+                    console.error('处理失败:', error);
+                    throw error;
+                }
+            }
+
+            /**
+             * 更新进度
+             */
+            updateProgress(percent, text) {
+                console.log(`📊 进度更新: ${percent}% - ${text}`);
+                
+                const progressFill = document.getElementById('progressFill');
+                const progressText = document.getElementById('progressText');
+                
+                if (progressFill) {
+                    progressFill.style.width = percent + '%';
+                    console.log(`✅ 进度条宽度已更新: ${percent}%`);
+                }
+                
+                if (progressText) {
+                    if (percent === 100) {
+                        progressText.textContent = text;
+                        progressText.classList.add('compressing-animation');
+                        console.log(`✅ 显示: ${text} (压缩动画)`);
+                    } else {
+                        progressText.textContent = `${text} ${percent}%`;
+                        progressText.classList.remove('compressing-animation');
+                        console.log(`✅ 显示: ${text} ${percent}%`);
+                    }
+                }
+            }
+
+            /**
+             * 显示结果
+             */
+            showResult(fileInfo) {
+                this.state = 'completed';
+                
+                document.getElementById('filePreviewSection').style.display = 'none';
+                document.getElementById('resultSection').style.display = 'block';
+
+                document.getElementById('resultFileName').textContent = fileInfo.fileName;
+                document.getElementById('resultOriginalSize').textContent = 
+                    this.formatFileSize(fileInfo.originalSize);
+                document.getElementById('resultCompressedSize').textContent = 
+                    this.formatFileSize(fileInfo.compressedSize);
+
+                const saved = fileInfo.originalSize - fileInfo.compressedSize;
+                const savedPercent = Math.round((saved / fileInfo.originalSize) * 100);
+                
+                document.getElementById('resultSaved').textContent = `(节省 ${savedPercent}%)`;
+            }
+
+            /**
+             * 显示错误
+             */
+            showError(message) {
+                this.state = 'error';
+                
+                document.getElementById('filePreviewSection').style.display = 'none';
+                document.getElementById('errorSection').style.display = 'block';
+                document.getElementById('errorMessage').textContent = message;
+            }
+
+            /**
+             * 处理下载
+             */
+            async handleDownload() {
+                if (!this.currentFile || !this.currentFile.downloadUrl) {
+                    console.error('没有可下载的文件');
+                    alert('下载链接不存在，请重新压缩');
+                    return;
+                }
+
+                try {
+                    // 使用通用下载管理器
+                    await downloadManager.download({
+                        downloadPath: this.currentFile.downloadUrl,
+                        fileName: this.currentFile.fileName,
+                        addCompressedSuffix: true,
+                        openInNewTab: true,
+                        onSuccess: (fileName) => {
+                            console.log('✅ 下载成功:', fileName);
+                        },
+                        onError: (error) => {
+                            console.error('❌ 下载失败:', error);
+                            alert(error || '下载失败，请重试');
+                        }
+                    });
+                } catch (error) {
+                    console.error('下载失败:', error);
+                    alert(error.message || '下载失败，请重试');
+                }
+            }
+
+            /**
+             * 重置
+             */
+            reset() {
+                console.log('重置组件');
+                
+                this.currentFile = null;
+                this.originalFile = null;
+                this.state = 'idle';
+                
+                const fileInput = document.getElementById('fileInput');
+                if (fileInput) fileInput.value = '';
+                
+                document.getElementById('uploadSection').style.display = 'block';
+                document.getElementById('filePreviewSection').style.display = 'none';
+                document.getElementById('resultSection').style.display = 'none';
+                document.getElementById('errorSection').style.display = 'none';
+            }
+            
+            /**
+             * 重试
+             */
+            retry() {
+                console.log('重试压缩');
+                
+                if (!this.originalFile) {
+                    console.warn('没有原始文件，执行完全重置');
+                    this.reset();
+                    return;
+                }
+                
+                document.getElementById('errorSection').style.display = 'none';
+                this.showFileSelected(this.originalFile);
+                
+                console.log('已恢复到文件预览界面，可以再次压缩');
+            }
+
+            /**
+             * 格式化文件大小
+             */
+            formatFileSize(bytes) {
+                if (bytes === 0) return '0 B';
+                const k = 1024;
+                const sizes = ['B', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return (bytes / Math.pow(k, i)).toFixed(2) + ' ' + sizes[i];
+            }
+        }
+
+        // 初始化应用
+        async function initApp() {
+            console.log('🎬 应用开始初始化...');
+            
+            // 渲染 PDF 压缩组件
+            console.log('📍 初始化 PDF 压缩组件');
+            const compressor = new PDFCompressor('compressorContainer');
+            compressor.render();
+            console.log('✅ PDF 压缩组件渲染完成');
+            
+            // 暴露到全局方便调试
+            window.compressor = compressor;
+            
+            console.log('🎉 应用初始化完成');
+        }
+
+        // 等待 DOM 完全加载后再初始化
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
+    </script>
+    
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "pdfsize - PDF压缩工具",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web Browser",
+        "logo": "https://pptsize.com/logo.png",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "CNY"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "1250"
+        },
+        "description": "免费在线PDF压缩工具，支持PDF文件压缩，快速压缩PDF体积大小，保持文档质量。无需下载安装，一键压缩PDF文件，完全免费。",
+        "keywords": "免费PDF压缩, 免费PDF压缩工具, 在线压缩PDF, 压缩PDF文件大小, PDF文件太大怎么办, PDF图片压缩, PDF体积减小, PDF优化, PDF瘦身, PDF压缩免费, 在线PDF优化, PDF压缩教程, 如何压缩PDF",
+        "featureList": [
+            "完全免费使用",
+            "PDF文件压缩",
+            "保持文档质量",
+            "快速压缩处理",
+            "一键压缩PDF",
+            "无需下载安装",
+            "PDF体积压缩",
+            "PDF大小压缩"
+        ]
+    }
+    </script>
+</body>
+</html>
+

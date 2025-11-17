@@ -1,0 +1,837 @@
+/* ========================================
+   ilovepdf 风格的 PPT 压缩组件
+   ======================================== */
+
+/* 组件容器 */
+.ppt-compressor {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* ========================================
+   上传区域
+   ======================================== */
+.upload-section {
+    width: 100%;
+}
+
+.upload-area {
+    background: #ffffff;
+    border: 3px dashed #e5e7eb;
+    border-radius: 16px;
+    padding: 80px 40px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-area:hover {
+    border-color: #a31e22;
+    background: #fef2f2;
+}
+
+.upload-area.drag-over {
+    border-color: #a31e22;
+    background: #fef2f2;
+    transform: scale(1.02);
+}
+
+.upload-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 16px 0;
+}
+
+.btn-upload {
+    background: linear-gradient(135deg, #a31e22 0%, #d32f2f 100%);
+    color: white;
+    border: none;
+    padding: 16px 48px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 24px 0;
+    box-shadow: 0 4px 15px rgba(163, 30, 34, 0.3);
+}
+
+.btn-upload:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(163, 30, 34, 0.4);
+}
+
+.btn-upload:active {
+    transform: translateY(0);
+}
+
+.upload-hint {
+    color: #6b7280;
+    font-size: 14px;
+    margin: 16px 0 0 0;
+}
+
+/* ========================================
+   文件预览区域
+   ======================================== */
+.file-preview-section {
+    width: 100%;
+}
+
+.file-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    padding-bottom: 20px; /* 默认底部内边距 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    position: relative;
+    transition: all 0.3s ease;
+    min-height: 80px; /* 最小高度 */
+}
+
+/* 当有进度条时增加底部空间 */
+.file-card.has-progress {
+    padding-bottom: 80px;
+}
+
+.file-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.file-card-icon {
+    color: #a31e22;
+    flex-shrink: 0;
+}
+
+.file-card-icon svg {
+    width: 40px;
+    height: 40px;
+}
+
+.file-card-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.file-card-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-card-size {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.file-card-stats {
+    font-size: 14px;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.file-card-stats .arrow {
+    color: #9ca3af;
+}
+
+.file-card-stats .compressed {
+    color: #059669;
+    font-weight: 600;
+}
+
+.file-card-stats .saved {
+    color: #059669;
+    font-weight: 600;
+}
+
+.file-card-remove {
+    background: transparent;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.file-card-remove:hover {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+.file-card-remove svg {
+    display: block;
+}
+
+/* 文件卡片进度条 */
+.file-card-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 20px 16px;
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    border-radius: 0 0 12px 12px;
+    box-sizing: border-box;
+}
+
+.file-card-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.file-card-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #a31e22 0%, #d32f2f 100%);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    width: 0; /* 初始宽度 */
+}
+
+.file-card-progress-text {
+    font-size: 13px;
+    color: #6b7280;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* 压缩中动画效果 */
+.file-card-progress-text.compressing-animation {
+    color: #a31e22;
+    font-weight: 600;
+    animation: slideHorizontal 1.5s ease-in-out infinite;
+}
+
+/* 压缩选项 */
+.compress-options {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 24px;
+}
+
+.option-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.option-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: #a31e22;
+}
+
+.option-content {
+    flex: 1;
+}
+
+.option-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.option-desc {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+/* ========================================
+   底部操作按钮
+   ======================================== */
+.bottom-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-compress {
+    background: linear-gradient(135deg, #a31e22 0%, #d32f2f 100%);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(163, 30, 34, 0.3);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-compress:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(163, 30, 34, 0.4);
+}
+
+.btn-compress:active {
+    transform: translateY(0);
+}
+
+.btn-compress:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn-compress:disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 15px rgba(163, 30, 34, 0.3);
+}
+
+/* 按钮加载动画 */
+.btn-compress .spinner {
+    width: 18px;
+    height: 18px;
+    border: 2.5px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.btn-download {
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(5, 150, 105, 0.4);
+}
+
+.btn-download:active {
+    transform: translateY(0);
+}
+
+.btn-another {
+    background: white;
+    color: #6b7280;
+    border: 2px solid #e5e7eb;
+    padding: 14px 32px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-another:hover {
+    border-color: #a31e22;
+    color: #a31e22;
+    background: #fef2f2;
+}
+
+/* ========================================
+   结果区域
+   ======================================== */
+.result-section {
+    text-align: center;
+    width: 100%;
+}
+
+.result-success-icon {
+    margin: 0 auto 24px;
+    animation: scaleIn 0.5s ease;
+}
+
+.result-error-icon {
+    margin: 0 auto 24px;
+    animation: shake 0.5s ease;
+}
+
+.result-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 32px 0;
+}
+
+.file-card.result {
+    margin-bottom: 32px;
+}
+
+.file-card-download {
+    background: transparent;
+    color: #6b7280;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.file-card-download:hover {
+    color: #a31e22;
+    background: #fee2e2;
+}
+
+.file-card-download svg {
+    display: block;
+}
+
+/* ========================================
+   错误区域
+   ======================================== */
+.error-section {
+    text-align: center;
+    width: 100%;
+}
+
+.error-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 16px 0;
+}
+
+.error-message {
+    color: #6b7280;
+    font-size: 15px;
+    margin: 0 0 32px 0;
+    line-height: 1.6;
+}
+
+/* ========================================
+   动画
+   ======================================== */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes scaleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-10px);
+    }
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+/* ========================================
+   响应式设计
+   ======================================== */
+@media (max-width: 768px) {
+    .ppt-compressor {
+        margin: 30px auto;
+    }
+    
+    .upload-area {
+        padding: 60px 24px;
+    }
+    
+    .upload-title {
+        font-size: 24px;
+    }
+    
+    .btn-upload {
+        padding: 14px 36px;
+        font-size: 16px;
+    }
+    
+    .file-card {
+        padding: 16px;
+        padding-bottom: 16px;
+        gap: 12px;
+    }
+    
+    .file-card.has-progress {
+        padding-bottom: 70px;
+    }
+    
+    .file-card-name {
+        font-size: 15px;
+    }
+    
+    .file-card-size,
+    .file-card-stats {
+        font-size: 13px;
+    }
+    
+    .compress-options {
+        padding: 16px;
+    }
+    
+    .option-title {
+        font-size: 14px;
+    }
+    
+    .option-desc {
+        font-size: 12px;
+    }
+    
+    .btn-compress,
+    .btn-download,
+    .btn-another {
+        padding: 14px 24px;
+        font-size: 15px;
+    }
+    
+    
+    .result-title,
+    .error-title {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .upload-area {
+        padding: 40px 20px;
+    }
+    
+    .upload-title {
+        font-size: 20px;
+    }
+    
+    .file-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px;
+        padding-bottom: 12px;
+    }
+    
+    .file-card.has-progress {
+        padding-bottom: 120px;
+    }
+    
+    .file-card-remove {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+    }
+    
+    .file-card-progress {
+        padding: 10px 16px 12px;
+    }
+    
+}
+
+/* ========================================
+   压缩等级选项
+   ======================================== */
+.option-title-main {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 16px;
+}
+
+.level-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 8px;
+    border: 2px solid transparent;
+}
+
+.level-option:hover {
+    background: #f9fafb;
+}
+
+.level-option:has(input:checked) {
+    background: #fef2f2;
+    border-color: #a31e22;
+}
+
+.level-option input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: #a31e22;
+}
+
+.level-content {
+    flex: 1;
+}
+
+.level-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.level-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.level-badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.level-badge.recommended {
+    background: linear-gradient(135deg, #a31e22 0%, #d32f2f 100%);
+    color: white;
+}
+
+.level-info-btn {
+    background: transparent;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 2px;
+    margin-left: auto;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.level-info-btn:hover {
+    color: #a31e22;
+    transform: scale(1.1);
+}
+
+/* 纯CSS提示框 */
+.level-info-btn::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px) scale(0.95);
+    background: #111827;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+    white-space: normal;
+    width: max-content;
+    max-width: 280px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+    z-index: 10000;
+    
+    /* 初始状态：隐藏 */
+    opacity: 0;
+    visibility: hidden;
+    
+    /* 过渡动画 */
+    transition: opacity 0.2s ease, 
+                transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+                visibility 0.2s ease;
+}
+
+/* 箭头 */
+.level-info-btn::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 2px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #111827;
+    pointer-events: none;
+    z-index: 10001;
+    
+    /* 初始状态：隐藏 */
+    opacity: 0;
+    visibility: hidden;
+    
+    /* 过渡动画 */
+    transition: opacity 0.2s ease,
+                transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+                visibility 0.2s ease;
+}
+
+/* 悬停时显示提示框和箭头 */
+.level-info-btn:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0) scale(1);
+    transition-delay: 0.2s;
+}
+
+.level-info-btn:hover::before {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    transition-delay: 0.2s;
+}
+
+/* 左右排列的选项容器 */
+.level-options-horizontal {
+    display: flex;
+    gap: 12px;
+}
+
+.level-options-horizontal .level-option {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* 选项分隔线 */
+.options-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #e5e7eb, transparent);
+    margin: 20px 0;
+}
+
+/* 响应式 - 压缩等级选项 */
+@media (max-width: 768px) {
+    .option-title-main {
+        font-size: 15px;
+    }
+    
+    .level-option {
+        padding: 10px;
+    }
+    
+    .level-name {
+        font-size: 14px;
+    }
+    
+    .level-badge {
+        font-size: 10px;
+        padding: 2px 6px;
+    }
+    
+    /* 移动端改为纵向排列 */
+    .level-options-horizontal {
+        flex-direction: column;
+    }
+    
+    .level-options-horizontal .level-option {
+        margin-bottom: 8px;
+    }
+    
+    .level-options-horizontal .level-option:last-child {
+        margin-bottom: 0;
+    }
+    
+    /* 移动端分隔线间距 */
+    .options-divider {
+        margin: 16px 0;
+    }
+    
+    /* 移动端提示框优化 - 防止超出屏幕 */
+    .level-info-btn::after {
+        /* 调整定位方式，使用固定宽度和边距限制 */
+        left: auto;
+        right: 0;
+        transform: translateY(-8px) scale(0.95);
+        max-width: calc(100vw - 40px);
+        width: 220px;
+        font-size: 11px;
+        padding: 8px 10px;
+        line-height: 1.4;
+    }
+    
+    /* 箭头位置也需要调整 */
+    .level-info-btn::before {
+        left: auto;
+        right: 10px;
+        transform: translateY(-8px);
+    }
+    
+    /* 悬停时的状态调整 */
+    .level-info-btn:hover::after {
+        transform: translateY(0) scale(1);
+    }
+    
+    .level-info-btn:hover::before {
+        transform: translateY(0);
+    }
+}
+
+/* 极小屏幕优化 */
+@media (max-width: 480px) {
+    .level-info-btn::after {
+        width: 180px;
+        max-width: calc(100vw - 30px);
+        font-size: 10px;
+        padding: 6px 8px;
+    }
+    
+    .level-info-btn::before {
+        right: 8px;
+    }
+}
+
